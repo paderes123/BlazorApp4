@@ -1,4 +1,4 @@
-﻿name: Deploy Blazor WebAssembly to GitHub Pages
+name: Deploy Blazor WebAssembly to GitHub Pages
 
 on:
   push:
@@ -15,13 +15,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 9.0.x   # use 8.0.x if targeting .NET 8
+        dotnet-version: 9.0.x   # change to 8.0.x if your project targets .NET 8
 
     - name: Publish Blazor WebAssembly
-      run: dotnet publish -c Release -o release
+      run: dotnet publish MyFirstBlazorApp/MyFirstBlazorApp.csproj -c Release -o release
 
     - name: Fix base href
-      run: sed -i 's|<base href="/" />|<base href="/BlazorApp4/" />|' release/wwwroot/index.html
+      run: sed -i 's|<base href="/" />|<base href="/MyFirstBlazorApp/" />|' release/wwwroot/index.html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
