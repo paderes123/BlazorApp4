@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 9.0.x   # use 8.0.x if targeting .NET 8
 
     - name: Publish Blazor WebAssembly
-      run: dotnet publish -c Release -o release
+      run: dotnet publish BlazorApp4/BlazorApp4.csproj -c Release -o release
 
     - name: Fix base href
       run: sed -i 's|<base href="/" />|<base href="/BlazorApp4/" />|' release/wwwroot/index.html
